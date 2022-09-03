@@ -8,7 +8,7 @@ import './style.scss';
 export interface TaskProps {
   taskName: string;
   progressCount: number;
-  onItemClick: (key: string) => void;
+  onItemClick: (key: 'update' | 'delete' | 'move-right' | 'move-left') => void;
 }
 
 export default function Task(props: TaskProps) {

@@ -1,0 +1,31 @@
+.ant-modal-content {
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  .ant-modal-close {
+    svg {
+      color: #1D1F20;
+    }
+  }
+  .ant-modal-header {
+    border: none;
+    padding: 24px;
+    border-radius: 10px 10px 0px 0px;
+
+    .ant-modal-title {
+      font-weight: 700;
+      font-size: 18px;
+      color: #1D1F20;
+    }
+  }
+
+  .ant-modal-body {
+    padding: 0px 24px;
+  }
+
+  .ant-modal-footer {
+    border: none;
+    padding: 24px;
+    border-radius: 0px 0px 10px 10px;
+  }
+}

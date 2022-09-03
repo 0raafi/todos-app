@@ -8,7 +8,7 @@ import DropdownOverlay from '../DropdownOverlay';
 import { ArrowLeft, ArrowRight, Edit, Trash } from '../Icons';
 
 export interface TaskActionProps {
-  onItemClick: (key: string) => void;
+  onItemClick: (key: any) => void;
 }
 
 export default function TaskAction(props: TaskActionProps) {
@@ -28,7 +28,7 @@ export default function TaskAction(props: TaskActionProps) {
       onClick: handleOnItemClick
     },
     {
-      key: 'edit',
+      key: 'update',
       label: "Edit",
       icon: <Edit />,
       onClick: handleOnItemClick
