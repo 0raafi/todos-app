@@ -1,0 +1,49 @@
+@import './variables';
+
+.ant-progress {
+  .ant-progress-inner {
+    background-color: #EDEDED;
+  }
+
+  .ant-progress-bg {
+    height: 16px !important;
+  }
+
+  .ant-progress-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #757575;
+  }
+
+  &.ant-progress-status-normal,
+  &.ant-progress-status-active {
+    .ant-progress-bg {
+      background-color: $primary;
+    }
+  }
+
+  &.ant-progress-status-success {
+    .ant-progress-bg {
+      background-color: $success;
+    }
+
+    .ant-progress-text {
+      svg {
+        color: $success;
+      }
+    }
+  }
+
+  &.ant-progress-status-exception {
+    .ant-progress-bg {
+      background-color: $danger;
+    }
+
+    .ant-progress-text {
+      svg {
+        color: $danger;
+      }
+    }
+  }
+}

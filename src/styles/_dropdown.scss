@@ -1,0 +1,42 @@
+@import './variables';
+
+.ant-dropdown {
+  .ant-dropdown-menu {
+    padding: 8px 0px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.08);
+    min-width: 320px;
+
+    .ant-dropdown-menu-item {
+      padding: 6px 16px;
+      font-weight: 600;
+      font-size: 14px;
+      gap: 16px;
+
+      svg,
+      .ant-dropdown-menu-title-content {
+        color: #333333;
+      }
+
+      &:hover {
+        background-color: unset;
+
+        svg,
+        .ant-dropdown-menu-title-content {
+          color: $primary;
+        }
+      }
+
+      &-danger {
+        &:hover {
+
+          svg,
+          .ant-dropdown-menu-title-content {
+            color: $danger;
+          }
+        }
+
+      }
+    }
+  }
+}

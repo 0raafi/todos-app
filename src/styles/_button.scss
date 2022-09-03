@@ -5,6 +5,21 @@
   border: none;
   border-radius: 8px;
 
+  &.add-new {
+    background-color: transparent;
+    background: transparent;
+    color: #1D1F20;
+    box-shadow: none;
+
+    svg {
+      vertical-align: sub;
+    }
+
+    &:hover {
+      color: unset;
+    }
+  }
+
   &-primary {
     color: #fff;
     background-color: $primary;

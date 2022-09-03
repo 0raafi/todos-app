@@ -10,3 +10,5 @@ declare interface IHeaderAction<ActionProps> {
   title: string;
   actionProps?: ActionProps;
 }
+
+declare type Type = 'primary' | 'secondary' | 'danger' | 'success';

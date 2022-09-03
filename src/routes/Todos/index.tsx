@@ -1,5 +1,8 @@
-import { ButtonProps } from 'antd';
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
+import { ButtonProps, Col, Row } from 'antd';
+
+import Task from '../../components/Task';
+import GroupTask from '../../components/GroupTask';
 import useLocalData from '../../hooks/useLocalData';
 
 import './style.scss';
@@ -29,6 +32,27 @@ export default function Todos() {
     })
   }, [])
   return (
-    <div>index</div>
+    <Row gutter={16}>
+      <Col lg={6}>
+        <GroupTask
+          type="primary"
+          onAddNew={() => console.log('Add')}
+          title="July - September"
+        >
+          <Task
+            taskName="Re-designed the zero-g doggie bags. No more spills!"
+            progressCount={80}
+            onItemClick={(key) => console.log(key)}
+          />
+          <Task
+            taskName="Re-designed the zero-g doggie bags. No more spills!"
+            progressCount={80}
+            onItemClick={(key) => console.log(key)}
+          />
+        </GroupTask>
+      </Col>
+
+    </Row>
+
   )
 }
