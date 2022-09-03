@@ -2,7 +2,9 @@ import { useEffect } from 'react';
 import { ButtonProps, Col, Row } from 'antd';
 
 import Task from '../../components/Task';
+import { Plus } from '../../components/Icons';
 import GroupTask from '../../components/GroupTask';
+
 import useLocalData from '../../hooks/useLocalData';
 
 import './style.scss';
@@ -15,10 +17,7 @@ export default function Todos() {
       title: 'Product Roadmap',
       actionProps: {
         icon: (
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M6 2.5V9.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-            <path d="M2.5 6H9.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
+          <Plus />
         ),
         children: 'Add New Group',
         type: 'primary',
