@@ -11,7 +11,6 @@ export interface TodosDeleteProps {
 
 export default function TodosDelete(props: TodosDeleteProps) {
   const { visible, onCancel, onComplete } = props || {};
-  console.log(visible);
   
   return (
     <Modal

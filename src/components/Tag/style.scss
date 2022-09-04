@@ -4,8 +4,7 @@
   padding: 2px 8px;
   border-radius: 4px;
   border: 1px solid;
-  min-width: 80px;
-  max-width: 150px;
+  width: fit-content;
   text-align: center;
 
   &.primary {
@@ -26,7 +25,7 @@
     border-color: $success_border;
   }
 
-  &.success {
+  &.danger {
     color: $danger;
     background-color: $danger_surface;
     border-color: $danger_border;

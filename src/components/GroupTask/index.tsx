@@ -10,17 +10,18 @@ import './style.scss';
 export interface GroupTaskProps {
   type: Type;
   title: string;
+  description: string;
   children: any;
   onAddNew: () => void;
 }
 
 export default function GroupTask(props: GroupTaskProps) {
-  const { title, type, children, onAddNew } = props || {};
+  const { title, description, type, children, onAddNew } = props || {};
 
   return (
     <div className={clsx(['group-task', type || 'primary'])}>
-      <Tag type={type}>Group Task 1</Tag>
-      <div className="text-s bold">{title}</div>
+      <Tag type={type}>{title}</Tag>
+      <div className="text-s bold">{description}</div>
       {children}
       <div>
         <Button
