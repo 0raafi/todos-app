@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 
 import cookie from '../helpers/cookie';
 import { autoLogin } from '../graphql/queries/autoLogin';
+import Loading from './Loading';
 
 export interface AutoLoginProps {
   children: any;
@@ -23,7 +24,7 @@ export default function AutoLogin(props: AutoLoginProps) {
         cookie.get('access_token') ? (
           children
         ) : (
-          <p>Error auto login</p>
+          ''
         )
       }
     </>
