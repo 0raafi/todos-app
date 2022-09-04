@@ -3,7 +3,6 @@ import { useQuery } from '@apollo/client';
 
 import cookie from '../helpers/cookie';
 import { autoLogin } from '../graphql/queries/autoLogin';
-import Loading from './Loading';
 
 export interface AutoLoginProps {
   children: any;
