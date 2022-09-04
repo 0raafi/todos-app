@@ -15,7 +15,7 @@ const routes: IRouteConfig[] = [
     component: Layout,
     routes: [
       {
-        path: ['/', '/todos'],
+        path: ['/v1', '/'],
         component: Todos,
         meta: {
           title: 'Todos | Rakamin'
