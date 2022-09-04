@@ -124,10 +124,10 @@ export default function Todos() {
   return (
     <>
       <Spin indicator={<Loading />} spinning={loading || loadingItem}>
-        <Row gutter={16}>
+        <Row gutter={[16, 16]}>
           {
             todos.map(({ title, id: todo_id, description, items }, key) => (
-              <Col lg={6} key={todo_id}>
+              <Col span={24} lg={6} key={todo_id}>
                 <GroupTask
                   type={groupTaskType[`${key}` as '0' | '1' | '2' | '3'] as any}
                   onAddNew={() => handleOnItemClick('create', { todo_id })}
