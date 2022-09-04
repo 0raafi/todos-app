@@ -12,6 +12,7 @@ import GroupTask from '../../components/GroupTask';
 import useLocalData from '../../hooks/useLocalData';
 
 import { todosQuery } from '../../graphql/queries/todos';
+import { todosItemsQuery } from '../../graphql/queries/todosItems';
 
 import './style.scss';
 
@@ -19,7 +20,8 @@ export default function Todos() {
   const { dispatch } = useLocalData();
   const [selectedItemId, setSelectedItemId] = useState(null);
   const [showModal, setShowModal] = useState<'create' | 'update' | 'delete' | null>(null);
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState<any[]>([]);
+
   const groupTaskType = {
     '0': 'primary',
     '1': 'secondary',
@@ -27,12 +29,32 @@ export default function Todos() {
     '3': 'success'
   }
 
-  useQuery(todosQuery, {
-    onCompleted: ({ todos }) => {
-      setTodos(todos);
+  const { refetch: loadItems } = useQuery(todosItemsQuery, {
+    skip: true
+  });
 
+  useQuery(todosQuery, {
+    onCompleted: async ({ todos }) => {
+      const todosWithItems = await toTodosWithItems(todos);
+      setTodos(todosWithItems)
     }
   })
+
+  async function toTodosWithItems(todosData = []) {
+    let newTodos = [];
+
+    newTodos = await Promise.all(todosData.map(async (data: any) => {
+      const items = await loadItems({ todo_id: data.id }).then(({ data }) => data.todosItems);
+
+      return {
+        ...data,
+        items
+      }
+    }));
+
+    return newTodos
+
+  }
 
   function handleOnItemClick(type: 'update' | 'delete' | 'move-left' | 'move-right', value?: string) {
     switch (type) {
@@ -69,7 +91,7 @@ export default function Todos() {
     <>
       <Row gutter={16}>
         {
-          todos.map(({ title, id, description }, key) => (
+          todos.map(({ title, id, description, items }, key) => (
             <Col lg={6} key={id}>
               <GroupTask
                 type={groupTaskType[`${key}` as '0' | '1' | '2' | '3'] as any}
@@ -77,16 +99,18 @@ export default function Todos() {
                 title={title}
                 description={description}
               >
-                <Task
-                  taskName="Re-designed the zero-g doggie bags. No more spills!"
-                  progressCount={80}
-                  onItemClick={(key) => handleOnItemClick(key)}
-                />
-                <Task
-                  taskName="Re-designed the zero-g doggie bags. No more spills!"
-                  progressCount={80}
-                  onItemClick={(key) => handleOnItemClick(key)}
-                />
+                {
+                  (items || []).map(({ id, name, progress_percentage }: { id: string; name: string; progress_percentage: number }) => (
+                    <Task
+                      position={key + 1}
+                      key={id}
+                      taskName={name}
+                      progressCount={progress_percentage}
+                      onItemClick={(keyItem) => handleOnItemClick(keyItem)}
+                    />
+                  ))
+                }
+
               </GroupTask>
             </Col>
           ))

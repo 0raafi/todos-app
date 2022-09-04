@@ -8,11 +8,12 @@ import DropdownOverlay from '../DropdownOverlay';
 import { ArrowLeft, ArrowRight, Edit, Trash } from '../Icons';
 
 export interface TaskActionProps {
+  position?: number;
   onItemClick: (key: any) => void;
 }
 
 export default function TaskAction(props: TaskActionProps) {
-  const { onItemClick } = props || {};
+  const { onItemClick, position } = props || {};
 
   const items: ItemType[] = [
     {
@@ -40,7 +41,17 @@ export default function TaskAction(props: TaskActionProps) {
       icon: <Trash />,
       onClick: handleOnItemClick
     },
-  ];
+  ].filter((item) => {
+    if (position === 1) {
+      return item.key != 'move-left'
+    }
+
+    if (position === 4) {
+      return item.key != 'move-right'
+    }
+
+    return item
+  });
 
   function handleOnItemClick(info: { key: string }) {
     onItemClick(info.key)
