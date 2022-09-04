@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@apollo/client": "^3.6.9",
     "@loadable/component": "^5.15.2",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
@@ -12,8 +13,13 @@
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "antd": "^4.22.8",
+    "apollo-link-rest": "^0.9.0-rc.1",
     "clsx": "^1.2.1",
+    "fbjs": "^3.0.4",
+    "graphql": "^16.6.0",
+    "graphql-anywhere": "^4.2.7",
     "node-sass": "^7.0.1",
+    "qs": "^6.11.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
@@ -48,6 +54,7 @@
     ]
   },
   "devDependencies": {
+    "@types/fbjs": "^3.0.3",
     "@types/loadable__component": "^5.13.4",
     "@types/react-helmet": "^6.1.5",
     "@types/react-router-config": "^5.0.6",
